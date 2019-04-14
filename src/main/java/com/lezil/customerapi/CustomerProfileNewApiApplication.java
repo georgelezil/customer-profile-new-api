@@ -1,5 +1,7 @@
 package com.lezil.customerapi;
 
+import java.util.Date;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +51,16 @@ public class CustomerProfileNewApiApplication implements CommandLineRunner {
 		logger.info("All person : " + dao.findAllUsingRowMapper());
 		*/
 		
+		
+		
 		logger.info("Find by id : " + dao.findById(10001));
+		//Insert
+		logger.info("Insert  : ", dao.insert(new Person(10005,"JPA1","JP1LAST", new Date())));
+		//Update
+		logger.info("Update by id : ", dao.insert(new Person(10001,"JPA2","JP2LAST", new Date())));
+		
+		dao.deleteById(10002);
+		
 	}
 
 }

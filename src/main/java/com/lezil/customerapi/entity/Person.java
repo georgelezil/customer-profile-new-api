@@ -16,13 +16,8 @@ public class Person {
 	@GeneratedValue
 	private int id;
 	
-	@Column
 	private String name;
-	
-	@Column
 	private String location;
-	
-	@Column
 	private Date birthDate;
 	
 	public Person() {
@@ -30,7 +25,7 @@ public class Person {
 	}
 	
 	//Spring JPA
-	public Person(String name, String location, Date birthDate) {
+	public Person(int id, String name, String location, Date birthDate) {
 		super();
 		this.name = name;
 		this.location = location;
