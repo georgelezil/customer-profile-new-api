@@ -1,5 +1,6 @@
 package com.lezil.customerapi.jdbc;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,15 @@ public class PersonJdbcDao {
 	
 	public void deleteById(int id) {
 		jbbcTemplate.update("delete from person where id=?", new Object[]{id});
+	}
+	
+	public int insert(Person person){
+		return jbbcTemplate.update("insert into person (id,name,location,birth_date) values (?,?,?,?)", 
+				new Object[]{
+						person.getId(),
+						person.getName(),
+						person.getLocation(),
+						new Timestamp(person.getBirthDate().getTime())});
 	}
 	
 	
