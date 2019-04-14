@@ -28,9 +28,13 @@ public class CustomerProfileNewApiApplication implements CommandLineRunner {
 		Person person =  personJdbcDao.findById(10001);
 		logger.info("Find by id : " + personJdbcDao.findById(10001));
 		logger.info("Delete by id : ");
-		personJdbcDao.deleteById(10001);
+		logger.info("Delete row by id : ", personJdbcDao.deleteById(10001));
 		person.setId(10004);
-		personJdbcDao.insert(person);
+		logger.info("Insert row by id : ", personJdbcDao.insert(person));
+		
+		person =  personJdbcDao.findById(10004);
+		person.setName("Test Update");
+		logger.info("Update row by id : ", personJdbcDao.update(person));
 		
 	}
 
