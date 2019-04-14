@@ -61,6 +61,9 @@ public class CustomerProfileNewApiApplication implements CommandLineRunner {
 		
 		dao.deleteById(10002);
 		
+		logger.info("jpa All person : " + dao.findAll());
+		
+		
 	}
 
 }
