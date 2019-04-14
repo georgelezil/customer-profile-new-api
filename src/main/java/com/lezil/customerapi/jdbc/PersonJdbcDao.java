@@ -19,4 +19,12 @@ public class PersonJdbcDao {
 		return jbbcTemplate.query("select * from person", new BeanPropertyRowMapper(Person.class));
 		
 	}
+	
+	public Person findById(int id) {
+		return (Person) jbbcTemplate.queryForObject("select * from person where id=?", new Object[]{id},
+				new BeanPropertyRowMapper(Person.class));
+		
+	}
+	
+	
 }

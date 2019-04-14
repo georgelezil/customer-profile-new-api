@@ -24,7 +24,7 @@ public class CustomerProfileNewApiApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		logger.info("All person : " + personJdbcDao.findAll());
-		
+		logger.info("Find by id : " + personJdbcDao.findById(10001));
 	}
 
 }
