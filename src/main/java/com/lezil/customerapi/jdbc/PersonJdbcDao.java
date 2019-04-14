@@ -26,5 +26,9 @@ public class PersonJdbcDao {
 		
 	}
 	
+	public void deleteById(int id) {
+		jbbcTemplate.update("delete from person where id=?", new Object[]{id});
+	}
+	
 	
 }
