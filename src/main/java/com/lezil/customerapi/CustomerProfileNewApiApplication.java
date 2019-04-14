@@ -24,6 +24,7 @@ public class CustomerProfileNewApiApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+		
 		logger.info("All person : " + personJdbcDao.findAll());
 		Person person =  personJdbcDao.findById(10001);
 		logger.info("Find by id : " + personJdbcDao.findById(10001));
@@ -35,6 +36,8 @@ public class CustomerProfileNewApiApplication implements CommandLineRunner {
 		person =  personJdbcDao.findById(10004);
 		person.setName("Test Update");
 		logger.info("Update row by id : ", personJdbcDao.update(person));
+		
+		logger.info("All person : " + personJdbcDao.findAllUsingRowMapper());
 		
 	}
 
