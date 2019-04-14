@@ -2,17 +2,43 @@ package com.lezil.customerapi.entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="person")
 public class Person {
 	
+	@Id
+	@GeneratedValue
 	private int id;
+	
+	@Column
 	private String name;
+	
+	@Column
 	private String location;
+	
+	@Column
 	private Date birthDate;
 	
 	public Person() {
 		
 	}
 	
+	//Spring JPA
+	public Person(String name, String location, Date birthDate) {
+		super();
+		this.name = name;
+		this.location = location;
+		this.birthDate = birthDate;
+	}
+	
+	//Spring JDBC
+	/*
 	public Person(int id, String name, String location, Date birthDate) {
 		super();
 		this.id = id;
@@ -20,6 +46,7 @@ public class Person {
 		this.location = location;
 		this.birthDate = birthDate;
 	}
+	*/
 	
 	public int getId() {
 		return id;

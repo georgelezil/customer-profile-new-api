@@ -9,14 +9,21 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.lezil.customerapi.entity.Person;
 import com.lezil.customerapi.jdbc.PersonJdbcDao;
+import com.lezil.customerapi.jpa.PersonJpaRepository;
 
 @SpringBootApplication
 public class CustomerProfileNewApiApplication implements CommandLineRunner {
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
+	//This is for Spring JDBC
+	/*@Autowired
+	PersonJdbcDao dao;*/
+	
+	
+	//This is for JPA
 	@Autowired
-	PersonJdbcDao personJdbcDao;
+	PersonJpaRepository dao;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(CustomerProfileNewApiApplication.class, args);
@@ -24,21 +31,25 @@ public class CustomerProfileNewApiApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+	
 		
-		logger.info("All person : " + personJdbcDao.findAll());
-		Person person =  personJdbcDao.findById(10001);
-		logger.info("Find by id : " + personJdbcDao.findById(10001));
+		//This is for Spring JDBC
+		/*
+		logger.info("All person : " + dao.findAll());
+		Person person =  dao.findById(10001);
+		logger.info("Find by id : " + dao.findById(10001));
 		logger.info("Delete by id : ");
-		logger.info("Delete row by id : ", personJdbcDao.deleteById(10001));
+		logger.info("Delete row by id : ", dao.deleteById(10001));
 		person.setId(10004);
-		logger.info("Insert row by id : ", personJdbcDao.insert(person));
-		
-		person =  personJdbcDao.findById(10004);
+		logger.info("Insert row by id : ", dao.insert(person));
+			
+		person =  dao.findById(10004);
 		person.setName("Test Update");
-		logger.info("Update row by id : ", personJdbcDao.update(person));
+		logger.info("Update row by id : ", dao.update(person));
+		logger.info("All person : " + dao.findAllUsingRowMapper());
+		*/
 		
-		logger.info("All person : " + personJdbcDao.findAllUsingRowMapper());
-		
+		logger.info("Find by id : " + dao.findById(10001));
 	}
 
 }
