@@ -1,4 +1,4 @@
-package com.lezil.customerapi;
+/*package com.lezil.customerapi;
 
 import java.util.Date;
 
@@ -47,3 +47,4 @@ public class CustomerProfileNewApiApplicationJPA implements CommandLineRunner {
 
 }
 
+*/

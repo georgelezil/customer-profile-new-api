@@ -1,4 +1,4 @@
-package com.lezil.customerapi;
+/*package com.lezil.customerapi;
 
 import java.util.Date;
 
@@ -12,7 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.lezil.customerapi.entity.Person;
 import com.lezil.customerapi.jdbc.PersonJdbcDao;
 
-@SpringBootApplication
+//@SpringBootApplication
 public class CustomerProfileNewApiApplicationJDBC implements CommandLineRunner {
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -46,3 +46,4 @@ public class CustomerProfileNewApiApplicationJDBC implements CommandLineRunner {
 	}
 
 }
+*/
