@@ -9,6 +9,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -65,6 +68,37 @@ public class CustomerController {
 		return new ResponseEntity<List<Person>>(personlst, HttpStatus.OK);
 
 	}
+	
+	@PostMapping("/saveperson")
+	public ResponseEntity<Person> savePerson(@RequestBody Person person) throws PersonNotFoundException {
+		
+		Person personObj = dao.insert(person);
+		if (personObj == null)  {
+			throw new PersonNotFoundException("Person not created");
+		}
+		return new ResponseEntity<Person>(personObj, HttpStatus.OK);
+	}
+
+	@PutMapping("/updateperson")
+	public ResponseEntity<Person> updatePerson(@RequestBody Person person) throws PersonNotFoundException {
+		
+		dao.update(person);
+		if (person == null)  {
+			throw new PersonNotFoundException("No Person data passsed");
+		}
+		return new ResponseEntity<Person>(person, HttpStatus.OK);
+	}
+	
+	@PutMapping("/deleteperson")
+	public ResponseEntity<String> deletePerson(@RequestBody Person person) throws PersonNotFoundException {
+		
+		dao.deleteById(person.getId());
+		if (person == null)  {
+			throw new PersonNotFoundException("No Person data passsed");
+		}
+		return new ResponseEntity<String>("Person deleted successfully", HttpStatus.OK);
+	}
+
 
 	@ExceptionHandler(PersonNotFoundException.class)
 	public ResponseEntity<ErrorResponse> exceptionHandler(Exception ex) {
